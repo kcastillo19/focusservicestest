@@ -6,7 +6,7 @@ option = webdriver.ChromeOptions()
 chrome_prefs = {}
 option.experimental_options["prefs"] = chrome_prefs
 chrome_prefs["profile.default_content_settings"] = {"popups": 1}
-driver=webdriver.Chrome(executable_path="C:\\work\\chromedriver.exe", options=option)
+driver=webdriver.Chrome(executable_path="C:\\focusservices\\focusservicestest\\utilities\\chromedriver.exe", options=option)
 driver.maximize_window()
 driver.get("https://www.google.com")
 
