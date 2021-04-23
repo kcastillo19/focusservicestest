@@ -21,6 +21,7 @@ Setup Instructions for local environment:
 9. Go to Edit Configurations - click on + - select Python tests and search the location for C:\Users\username\PycharmProjects\focusservicestest\tests\test_search.py
 
 Run scripts:
+
 10. Open a cmd console as administrator and run cd C:\Users\karen.castillo\PycharmProjects\focusservicestest\tests
 11. run py.test test_search.py
 
