@@ -23,5 +23,5 @@ Setup Instructions for local environment:
 Run scripts:
 
 10. Open a cmd console as administrator and run cd C:\Users\karen.castillo\PycharmProjects\focusservicestest\tests
-11. run py.test test_search.py
+11. run py.test test_search.py -v -s
 
