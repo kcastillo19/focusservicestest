@@ -1,9 +1,14 @@
+from pageObjects.LocationPage import LocationPage
+from pageObjects.LocationTab2 import LocationTab2
+from pageObjects.LocationTab3 import LocationTab3
 from pageObjects.SearchPage import SearchPage
 from pageObjects.GoogleResults import GoogleResults
+from pageObjects.HomePage import HomePage
 import time
 from utilities.BaseClass import BaseClass
+import pytest
 
-class GoogleSearch(BaseClass):
+class TestGoogleSearch(BaseClass):
 
     def test_search(self):
 
@@ -14,47 +19,37 @@ class GoogleSearch(BaseClass):
         spage.enter_search().send_keys("Focus Services")
         # Google Search button and redirect to google result page
         time.sleep(5)
-        SearchPage.enter_click()
+        spage.enter_click()
         # validate if the URL exists and click to Focus Home Page
         homepages = GoogleResults(self.driver)
         homepages.validateurl()
+        homepages.click_url()
+        # Validate if the Hiring button exists
+        homePage = HomePage(self.driver)
+        homePage.validatebutton()
+        # Location Click
+        menus=homePage.text_location()
 
+        i = -1
+        for menuTab in menus:
+            i = i + 1
+            m = menuTab.text
+            if m == "Locations":
+                homePage.click_location()[i].click()
+                break
 
-
-""""#Validate if the button exists
-hbutton = driver.find_element_by_xpath("//span[text()='Now Hiring!']")
-be= hbutton.text
-assert "Now Hiring!" in be, "The button does not exist"
-print("The button exists: {}".format(be))
-hbutton.click()
-
-#Location tab interactions
-menu=driver.find_elements_by_css_selector("ul[id='avia-menu'] li a")
-
-i=-1
-for menuTab in menu:
-    i = i+1
-    menus = menuTab.text
-    if menus == "Locations":
-        driver.find_elements_by_css_selector("span[ class='avia-menu-text']")[i].click()
-        break
-
-#Locate North America Link
-region = driver.find_element_by_css_selector("span[ class='av-inner-tab-title']").text
-assert "NORTH AMERICA" in region, "The text was not found"
-print(region+" link was found")
-
-#Validate Central America
-driver.find_element_by_link_text("CENTRAL AMERICA").click()
-
-title1=driver.find_element_by_xpath("//b[contains(text(), 'San Salvador, El Salvador')]").is_displayed()
-title2=driver.find_element_by_xpath("//b[contains(text(), 'Managua, Nicaragua')]").is_displayed()
-print(title1, title2)
-
-#Validate Asia
-driver.find_element_by_link_text("ASIA").click()
-title3=driver.find_element_by_xpath("//b[contains(text(), 'Bacolod City, Philippines')]").is_displayed()
-print(title3)"""
+        # Locate North America Link
+        validates= LocationPage(self.driver)
+        validates.validate_na()
+        # Validate Central America
+        validates.click_ca()
+        catittles=LocationTab2(self.driver)
+        catittles.validate_title1()
+        catittles.validate_title2()
+        # Validate Asia
+        catittles.click_asia()
+        asiatab= LocationTab3(self.driver)
+        asiatab.validate_asia()
 
 
 
