@@ -20,8 +20,8 @@ Setup Instructions for local environment:
 8. Go to Interpreter settings and select the correct interpreter for python version 
 9. Go to Edit Configurations - click on + - select Python tests and search the location for C:\Users\username\PycharmProjects\focusservicestest\tests\test_search.py
 
-Run scripts:
-
-10. Open a cmd console as administrator and run cd C:\Users\karen.castillo\PycharmProjects\focusservicestest\tests
-11. run py.test test_search.py -v -s
+Run scrip
+10. Set Chrome driver in the correct path and must match with the path set in the conftest.py "/usr/local/bin/chromedriver"
+11. Open a cmd console as administrator and run cd C:\Users\username\PycharmProjects\focusservicestest\tests
+12. run py.test test_search.py -v -s
 
